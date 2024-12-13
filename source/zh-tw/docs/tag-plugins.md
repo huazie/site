@@ -1,15 +1,18 @@
 ---
 title: 標籤外掛（Tag Plugins）
 ---
-標籤外掛和 Front-matter 中的標籤不同，它們是用於在文章中快速插入特定內容的外掛。
 
-雖然你可以以任何格式寫你的文章，但標籤外掛會永遠可用，且語法都會相同。
+Tag plugins are different from post tags. They are ported from Octopress and provide a useful way for you to quickly add specific content to your posts.
+
+Although you can write your posts in any format, the tag plugins will always be available and syntax remains the same.
+
+{% youtube I07XMi7MHd4 %}
 
 _標籤外掛不應該被包裝在 Markdown 語法當中，例如： `[]({% post_path lorem-ipsum %})` 是不支援的。_
 
 ## 引用區塊 (Block Quote)
 
-在文章中插入引言，可包含作者、來源和標題。
+Perfect for adding quotes to your post, with optional author, source and title information.
 
 **捷徑：** quote
 
@@ -19,7 +22,9 @@ content
 {% endblockquote %}
 ```
 
-**沒有提供參數，僅輸出普通的引用區塊**
+### 範例
+
+**No arguments. Plain blockquote.**
 
 ```
 {% blockquote %}
@@ -40,7 +45,7 @@ Do not just seek happiness for yourself. Seek happiness for all. Through kindnes
 ```
 
 {% blockquote David Levithan, Wide Awake %}
-Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
+Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy. Seek happiness for all. Through kindness. Through mercy.
 {% endblockquote %}
 
 **引用 Twitter**
@@ -69,7 +74,7 @@ Every interaction is both precious and an opportunity to delight.
 
 ## 程式碼區塊 (Code Block)
 
-在文章中插入程式碼。
+A useful feature for adding code snippets to your post.
 
 **捷徑：** code
 
@@ -81,16 +86,18 @@ code snippet
 
 以 `option:value` 格式設定額外的選項，例如：`line_number:false first_line:5`。
 
-額外選項 | 說明 | 預設值
---- | --- | ---
-`line_number` | 顯示行號 | `true`
-`line_threshold` | 當程式碼區塊的行數超過臨界值時，才顯示行號。 | `0` |
-`highlight` | 啟用程式碼強調 | `true`
-`first_line` | 設定起始的程式碼行號 | `1`
-`mark` | 強調特定的程式碼行號，每個值會以逗點區分。特定的程式碼區間則使用破折號 (dash)<br>範例：`mark:1,4-7,10` 會標示行號 1、 4 到 7 以及 10。 |
-`wrap` | 將程式碼區塊包裝在 [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table) 中 | `true`
+| 額外選項             | 文章摘要                                                                                            | Default |
+| ---------------- | ----------------------------------------------------------------------------------------------- | ------- |
+| `line_number`    | 顯示行號                                                                                            | `true`  |
+| `line_threshold` | Only show line numbers as long as the numbers of lines of the code block exceed such threshold. | `0`     |
+| `highlight`      | 啟用程式碼強調                                                                                         | `true`  |
+| `first_line`     | Specify the first line number                                                                   | `1`     |
+| `mark`           | 強調特定的程式碼行號，每個值會以逗點區分。 特定的程式碼區間則使用破折號 (dash)<br>範例：`mark:1,4-7,10` 會標示行號 1、 4 到 7 以及 10。   |         |
+| `wrap`           | 將程式碼區塊包裝在 [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table) 中  | `true`  |
 
-**普通的程式碼區塊**
+### 說明
+
+**A plain code block**
 
 ```
 {% codeblock %}
@@ -114,7 +121,7 @@ alert('Hello World!');
 [rectangle setX: 10 y: 10 width: 20 height: 20];
 {% endcodeblock %}
 
-**加上說明**
+**Adding a caption to the code block**
 
 ```
 {% codeblock Array.map %}
@@ -136,23 +143,22 @@ _.compact([0, 1, false, 2, '', 3]);
 ```
 
 {% codeblock _.compact http://underscorejs.org/#compact Underscore.js %}
-_.compact([0, 1, false, 2, '', 3]);
-=> [1, 2, 3]
+\_.compact([0, 1, false, 2, '', 3]); => [1, 2, 3]
 {% endcodeblock %}
 
-## 反引號 (Backtick) 程式碼區塊
+## Backtick Code Block
 
-另一種形式的程式碼區塊。
+This is identical to using a code block, but instead uses three backticks to delimit the block.
 
 {% raw %}
-&#96``[language] [title] [url] [link text]
+&#96`[language] [title] [url] [link text]
 code snippet
-&#96``
+&#96;`
 {% endraw %}
 
-## 抬升式引用區塊 (Pull Quote)
+## Pull Quote
 
-在文章中插入抬升式引用區塊。
+To add pull quotes to your posts:
 
 ```
 {% pullquote [class] %}
@@ -163,7 +169,7 @@ content
 ## jsFiddle (`v7.0.0` 中刪除)
 
 {% note warn %}
-如果你使用 `v7.0.0+`，請使用 [hexo-tag-embed](https://github.com/hexojs/hexo-tag-embed) 作為替代。
+The tag was removed in Hexo 7.0.0. 如果你使用 `v7.0.0+`，請使用 [hexo-tag-embed](https://github.com/hexojs/hexo-tag-embed) 作為替代。
 {% endnote %}
 
 在文章中嵌入 jsFiddle。
@@ -178,7 +184,7 @@ content
 如果你使用 `v7.0.0+`，請使用 [hexo-tag-embed](https://github.com/hexojs/hexo-tag-embed) 作為替代。
 {% endnote %}
 
-在文章中嵌入 Gist。
+To embed a Gist snippet:
 
 ```
 {% gist gist_id [filename] %}
@@ -210,10 +216,42 @@ content
 
 ## 插入程式碼
 
-插入 `source/downloads/code` 資料夾內的程式檔，資料夾取決於你在設定文件中 `code_dir` 的設定。
+插入 `source/downloads/code` 資料夾內的程式檔，資料夾取決於你在設定文件中 `code_dir` 的設定。 The folder location can be specified through the `code_dir` option in the config.
 
 ```
-{% include_code [title] [lang:language] path/to/file %}
+{% include_code [title] [lang:language] [from:line] [to:line] path/to/file %}
+```
+
+### 影片
+
+**Embed the whole content of test.js**
+
+```
+{% include_code lang:javascript test.js %}
+```
+
+**Embed line 3 only**
+
+```
+{% include_code lang:javascript from:3 to:3 test.js %}
+```
+
+**Embed line 5 to 8**
+
+```
+{% include_code lang:javascript from:5 to:8 test.js %}
+```
+
+**Embed line 5 to the end of file**
+
+```
+{% include_code lang:javascript from:5 test.js %}
+```
+
+**Embed line 1 to 8**
+
+```
+{% include_code lang:javascript to:8 test.js %}
 ```
 
 ## Youtube (`v7.0.0` 中刪除)
@@ -228,9 +266,9 @@ content
 {% youtube video_id [type] [cookie] %}
 ```
 
-### 範例
+### 引用文章
 
-**影片**
+**Embed a video**
 
 ```
 {% youtube lJIrF4YjHfQ %}
@@ -244,7 +282,7 @@ content
 
 **隱私模式**
 
-禁止 YouTube cookie
+YouTube's cookie is not used in this mode.
 
 ```
 {% youtube lJIrF4YjHfQ false %}
@@ -257,15 +295,15 @@ content
 如果你使用 `v7.0.0+`，請使用 [hexo-tag-embed](https://github.com/hexojs/hexo-tag-embed) 作為替代。
 {% endnote %}
 
-在文章中插入 Vimeo 影片。
+Inserts a responsive or specified size Vimeo video.
 
 ```
-{% vimeo video_id %}
+{% vimeo video_id [width] [height] %}
 ```
 
-## 引用文章
+## Include Posts
 
-引用其他文章的連結。
+Include links to other posts.
 
 ```
 {% post_path filename %}
@@ -280,23 +318,23 @@ content
 
 你可以自定義要顯示的文字，取代顯示文章的標題。
 
-文章標題及自定義文字預設會逸出 (escape)。你可以使用選項 `escape` 將逸出關閉。
+文章標題及自定義文字預設會逸出 (escape)。 你可以使用選項 `escape` 將逸出關閉。
 
 例如：
 
-**顯示文章標題。**
+**Display title of the post.**
 
 `{% raw %}{% post_link hexo-3-8-released %}{% endraw %}`
 
 {% post_link hexo-3-8-released %}
 
-**顯示自訂文字。**
+**Display custom text.**
 
 `{% raw %}{% post_link hexo-3-8-released 'Link to a post' %}{% endraw %}`
 
 {% post_link hexo-3-8-released 'Link to a post' %}
 
-**逸出標題。**
+**Escape title.**
 
 ```
 {% post_link hexo-4-released 'How to use <b> tag in title' %}
@@ -308,11 +346,12 @@ content
 ```
 {% post_link hexo-4-released '<b>bold</b> custom title' false %}
 ```
+
 {% post_link hexo-4-released '<b>bold</b> custom title' false %}
 
-## 引用資產
+## Include Assets
 
-引用文章的資產。
+Include post assets, to be used in conjunction with [`post_asset_folder`](/docs/asset-folders).
 
 ```
 {% asset_path filename %}
@@ -326,43 +365,43 @@ _hexo-renderer-marked 3.1.0+ 可以（可選的）自動解析文章內的圖片
 
 "foo.jpg" 位於 `http://example.com/2020/01/02/hello/foo.jpg`。
 
-**預設（沒有選項）**
+**Default (no option)**
 
 `{% asset_img foo.jpg %}`
 
-``` html
-<img src="/2020/01/02/hello/foo.jpg">
+```html
+<img src="/2020/01/02/hello/foo.jpg" />
 ```
 
 **自訂 Class**
 
 `{% asset_img post-image foo.jpg %}`
 
-``` html
-<img src="/2020/01/02/hello/foo.jpg" class="post-image">
+```html
+<img src="/2020/01/02/hello/foo.jpg" class="post-image" />
 ```
 
 **顯示尺寸**
 
 `{% asset_img foo.jpg 500 400 %}`
 
-``` html
-<img src="/2020/01/02/hello/foo.jpg" width="500" height="400">
+```html
+<img src="/2020/01/02/hello/foo.jpg" width="500" height="400" />
 ```
 
-**標題及替代文字**
+**Title & Alt**
 
-`{% asset_img logo.svg "lorem ipsum'dolor'" %}`
+`{% asset_img foo.jpg "lorem ipsum'dolor'" %}`
 
-``` html
-<img src="/2020/01/02/hello/foo.jpg" title="lorem ipsum" alt="dolor">
+```html
+<img src="/2020/01/02/hello/foo.jpg" title="lorem ipsum" alt="dolor" />
 ```
 
 ## URL
 
 ### url_for (7.0.0+)
 
-回傳一個具有前綴根路徑 URL。輸出將會自動編碼。
+回傳一個具有前綴根路徑 URL。 輸出將會自動編碼。
 
 ```
 {% url_for text path [relative] %}
@@ -370,23 +409,22 @@ _hexo-renderer-marked 3.1.0+ 可以（可選的）自動解析文章內的圖片
 
 **範例：**
 
-``` yml
+```yml
 _config.yml
-root: /blog/ # 範例
+root: /blog/ # example
 ```
 
-``` 
+```
 {% url_for blog index.html %}
 ```
 
-``` html
+```html
 <a href="/blog/index.html">blog</a>
 ```
 
-相對路徑連結則預設依照選項 `relative_link`
-例如：post/page 路徑是 '/foo/bar/index.html'
+相對路徑連結則預設依照選項 `relative_link` 例如：post/page 路徑是 '/foo/bar/index.html'
 
-``` yml
+```yml
 _config.yml
 relative_link: true
 ```
@@ -395,7 +433,7 @@ relative_link: true
 {% url_for blog index.html %}
 ```
 
-``` html
+```html
 <a href="../../index.html">blog</a>
 ```
 
@@ -405,13 +443,13 @@ relative_link: true
 {% url_for blog index.html false %}
 ```
 
-``` html
+```html
 <a href="/index.html">blog</a>
 ```
 
 ### full_url_for (7.0.0+)
 
-回傳一個 `config.url` 前綴的 URL。輸出將會自動編碼。
+回傳一個 `config.url` 前綴的 URL。 輸出將會自動編碼。
 
 ```
 {% full_url_for text path %}
@@ -419,7 +457,7 @@ relative_link: true
 
 **範例：**
 
-``` yml
+```yml
 _config.yml
 url: https://example.com/blog # 範例
 ```
@@ -428,13 +466,13 @@ url: https://example.com/blog # 範例
 {% full_url_for index /a/path %}
 ```
 
-``` html
+```html
 <a href="https://example.com/blog/a/path">index</a>
 ```
 
 ## Raw
 
-如果您要在文章中插入 Swig 標籤，可以試著使用 Raw 標籤，以免發生解析異常。
+If certain content is causing processing issues in your posts, wrap it with the `raw` tag to avoid rendering errors.
 
 ```
 {% raw %}
@@ -442,10 +480,9 @@ content
 {% endraw %}
 ```
 
-## 文章摘要
+## Post Excerpt
 
-使用在 `<!-- more -->` 標籤之前的文字作為為這篇文章的摘要。[front-matter](/docs/front-matter#Settings-amp-Their-Default-Values) 中的 `excerpt:` 值如果被特指的話，將會將其優先使用。
-
+使用在 `<!-- more -->` 標籤之前的文字作為為這篇文章的摘要。 [front-matter](/docs/front-matter#Settings-amp-Their-Default-Values) 中的 `excerpt:` 值如果被特指的話，將會將其優先使用。
 
 **範例：**
 
